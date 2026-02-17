@@ -825,164 +825,98 @@ h3{font-size: 22px; margin:0 0 10px 0;}
 .suggest-bubble .suggest-text{color:#111 !important;opacity:0.92;line-height:1.4}
 .suggest-bubble .suggest-link{display:inline-block;margin-top:10px;color:#111 !important;font-weight:900;text-decoration:underline}
 
-/* --- Project cards: light green hue variations + icon + thumbnail --- */
+/* =========================
+   Compact wg-project card layout (book-cover style)
+   - keeps: unique corner icon, unique thumbnail ("cover") left, tag pills
+   - reduces whitespace and improves readability
+   ========================= */
 .wg-project-card{
-  background: hsl(var(--wgHue, 138) 55% 92%);
-  border: 1px solid rgba(0,0,0,0.10);
-  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+  padding: 14px 14px 12px 14px !important;
+  border-radius: 18px !important;
 }
-.wg-project-card *{color: rgba(0,0,0,0.88);}
-.wg-project-card .wg-pill{
-  background: rgba(255,255,255,0.55);
-  border: 1px solid rgba(0,0,0,0.10);
-  color: rgba(0,0,0,0.78);
-}
-.wg-project-card__top{display:flex; gap:12px; align-items:flex-start;}
-.wg-project-card__media{display:flex; flex-direction:column; gap:10px; width:92px; flex:0 0 92px;}
-.wg-project-card__thumb{width:92px; height:72px; border-radius:14px; overflow:hidden; border:1px solid rgba(0,0,0,0.10); background: rgba(255,255,255,0.35);}
-.wg-project-card__thumbimg{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.02);}
-.wg-project-card__icon{
-  width:44px; height:44px; border-radius:14px;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(255,255,255,0.60);
-  border:1px solid rgba(0,0,0,0.10);
-}
-.wg-project-card__icon svg{width:24px;height:24px; color: rgba(0,0,0,0.78);}
-.wg-project-card__name{letter-spacing:-0.01em;}
-.wg-project-card__one-liner{color: rgba(0,0,0,0.75) !important;}
-.wg-project-card__body p{color: rgba(0,0,0,0.80) !important;}
-.wg-project-card__links a{
-  color: rgba(0,0,0,0.86) !important;
-  text-decoration: underline;
-  font-weight: 800;
-}
-.wg-project-card:hover{transform: translateY(-2px);}
 
-
-/* --- Project card structure update: corner icon + hero row --- */
-.wg-project-card{position:relative;}
 .wg-project-card__cornericon{
-  position:absolute;
-  top:10px; left:10px;
-  width:56px; height:56px;
-  border-radius:18px;
-  background:#ffffff;
-  border:1px solid rgba(0,0,0,0.12);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.14);
-  display:flex; align-items:center; justify-content:center;
-  z-index:6;
-}
-.wg-project-card__cornericon svg{width:28px;height:28px;color:rgba(0,0,0,0.80);}
-
-.wg-project-card__top{display:block;}
-.wg-project-card__main{padding-left:0;}
-.wg-project-card__name{margin-top:2px;}
-.wg-project-card__hero{
-  display:grid;
-  grid-template-columns: 88px 1fr;
-  gap:12px;
-  align-items:start;
-  margin-top:12px;
-}
-.wg-project-card__thumb2{
-  width:88px;
-  height:64px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid rgba(0,0,0,0.10);
-  background: rgba(255,255,255,0.35);
-}
-.wg-project-card__thumbimg2{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03);}
-.wg-project-card__hero .wg-project-card__meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:0;
-  align-content:flex-start;
-}
-.wg-project-card__meta{margin-top:10px;}
-/* ensure tags sit just below title and right of image */
-.wg-project-card__one-liner{margin-bottom:0;}
-
-/* Hide any legacy icon containers if present */
-.wg-project-card__icon,.wg-project-card__media{display:none !important;}
-
-/* --- wg-pill wrap fix (prevent right-edge clipping) --- */
-.wg-project-card__hero{padding-right:12px;}
-.wg-project-card__hero .wg-project-card__meta{min-width:0; gap:10px;}
-.wg-project-card__meta{padding-right:12px;}
-.wg-pill{
-  max-width:100%;
-  white-space:normal;
-  line-height:1.15;
-  overflow-wrap:anywhere;
+  top:10px !important; left:10px !important;
+  width:50px !important; height:50px !important;
+  border-radius:16px !important;
 }
 
-/* --- title/icon overlap fix + thumb left alignment --- */
-.wg-project-card__main{
-  padding-left: 64px; /* reserve space for corner icon so title never sits underneath */
+/* Title area: tighter spacing */
+.wg-project-card__name{
+  margin: 0 0 4px 72px !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+  text-align: left !important;
 }
-.wg-project-card__hero{
-  margin-left: -64px; /* pull hero row (thumb + tags) back to align with card left edge */
-  padding-left: 64px; /* keep internal alignment consistent */
-}
-.wg-project-card__thumb2{
-  width: 86px;
-  height: 62px;
-}
-.wg-project-card__hero{
-  grid-template-columns: 86px 1fr;
-}
-/* ensure nothing shows behind icon */
-.wg-project-card__cornericon::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:20px;
-  background:#ffffff;
-  z-index:-1;
-}
-
-/* --- v8 readability update for wg-project cards --- */
-.wg-project-card__main{padding-left:0 !important;}
-.wg-project-card__top{display:block !important;}
-/* keep icon in corner but keep title clear without shifting whole layout */
-.wg-project-card__name,
 .wg-project-card__one-liner{
-  margin-left: 72px; /* clear the corner icon */
-  text-align:left !important;
+  margin: 0 0 10px 72px !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
 }
-.wg-project-card__name{max-width:calc(100% - 84px);}
-.wg-project-card__one-liner{max-width:calc(100% - 84px);}
 
-/* hero row: thumbnail pinned to left edge of card */
+/* Thumbnail + tags row: compact "book cover" style */
 .wg-project-card__hero{
-  margin-left:0 !important;
-  padding-left:0 !important;
-  grid-template-columns: 110px 1fr !important;
-  gap:14px !important;
-  align-items:start !important;
-}
-.wg-project-card__thumb2{
-  width:110px !important;
-  height:78px !important;
+  margin-top: 6px !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  display: grid !important;
+  grid-template-columns: 76px 1fr !important;
+  gap: 12px !important;
+  align-items: start !important;
 }
 
-/* meta/tag area: give pills room; prevent narrow vertical wrapping */
+.wg-project-card__thumb2{
+  width: 76px !important;
+  height: 108px !important; /* book-cover feel */
+  border-radius: 14px !important;
+}
+
+.wg-project-card__thumbimg2{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  filter: saturate(1.08) contrast(1.06) !important;
+}
+
+/* Tag pills: tighter and avoid awkward wrapping */
 .wg-project-card__hero .wg-project-card__meta{
-  display:flex !important;
-  flex-wrap:wrap !important;
-  gap:10px !important;
-  min-width:0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  padding-right: 12px !important;
 }
+
 .wg-pill{
-  white-space:nowrap !important;
-  max-width:none !important;
+  padding: 7px 10px !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+  max-width: none !important;
 }
+
+/* Body + links: reduce vertical whitespace */
+.wg-project-card__body{
+  margin-top: 10px !important;
+}
+.wg-project-card__body p{
+  margin: 0 0 8px 0 !important;
+  line-height: 1.35 !important;
+}
+.wg-project-card__links{
+  margin-top: 8px !important;
+}
+
+/* Mobile tuning */
 @media (max-width: 520px){
-  .wg-project-card__name,
-  .wg-project-card__one-liner{margin-left:64px;}
-  .wg-project-card__hero{grid-template-columns: 96px 1fr !important;}
-  .wg-project-card__thumb2{width:96px !important; height:70px !important;}
+  .wg-project-card{padding: 12px !important;}
+  .wg-project-card__cornericon{width:46px !important;height:46px !important;}
+  .wg-project-card__name{margin-left:66px !important;}
+  .wg-project-card__one-liner{margin-left:66px !important;}
+  .wg-project-card__hero{grid-template-columns: 70px 1fr !important;}
+  .wg-project-card__thumb2{width:70px !important;height:100px !important;}
   .wg-pill{white-space:normal !important;}
 }
+
+
